@@ -1,38 +1,37 @@
-from flask import Flask, render_template, redirect
-from flask_pymongo import PyMongo
-import scrape_costa
+# import libraries
+from flask import Flask, render_template
+import pymongo
+import scrape_mars
 
-# Create an instance of Flask
-app = Flask(__name__)
+# instantiate Flask app
+app=Flask(__name__)
 
-# Use PyMongo to establish Mongo connection
-mongo = PyMongo(app, uri="mongodb://localhost:27017/weather_app")
+# establish mongo connection
+conn = 'mongodb://localhost:27017'
+cli = pymongo.MongoClient(conn)
 
+# connect to mongo mars db
+db = cli.planet
 
-# Route to render index.html template using data from Mongo
-@app.route("/")
-def home():
+### 2.2) CREATE /SCRAPE PATH
+@app.route('/scrape')
+def mars_scrape():
+	print('Server received request for "scrape" page...')
+	# clear out mars collection
+	db.mars.delete_many({})
+	# store result of "scrape()" function in mongo
+	dict = scrape_mars.scrape()
+	db.mars.insert_one(dict)
+	return render_template('scraping_complete.html')
 
-    # Find one record of data from the mongo database
-    # @TODO: YOUR CODE HERE!
-
-    # Return template and data
-    return render_template("index.html", vacation=destination_data)
-
-
-# Route that will trigger the scrape function
-@app.route("/scrape")
-def scrape():
-
-    # Run the scrape function and save the results to a variable
-    # @TODO: YOUR CODE HERE!
-
-    # Update the Mongo database using update and upsert=True
-    # @TODO: YOUR CODE HERE!
-
-    # Redirect back to home page
-    return redirect("/")
-
+### 2.3) CREATE / (ROOT) PATH
+@app.route('/')
+def root():
+    print('Server received request for root page...')
+    # pull everything from "mars" collection in "planet" database into "lstMars"
+    lstMars = db.mars.find()
+    # render index.html template and pass it "lstMars"
+    return render_template('index.html', lst=lstMars)
 
 if __name__ == "__main__":
     app.run(debug=True)
