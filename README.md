@@ -2,16 +2,16 @@
 
 [Jupyter Notebook Solution](https://github.com/ekenigsberg/BootCampHomework10-2019-08-10/blob/master/mission_to_mars.ipynb)<br/>
 and<br/>
-[Python/Flask Code](https://github.com/ekenigsberg/BootCampHomework10-2019-08-10/blob/master/app.py)<br/>
+[Python/Flask Code](https://github.com/ekenigsberg/BootCampHomework10-2019-08-10/blob/master/app.py) with supporting [Scraping Code](https://github.com/ekenigsberg/BootCampHomework10-2019-08-10/blob/master/scrape_mars.py)<br/>
 to<br/>
 [Data Analytics Boot Camp Homework #10](https://github.com/the-Coding-Boot-Camp-at-UT/UTAMCB201904DATA3/blob/master/12-Web-Scraping-and-Document-Databases/Homework/Instructions/README.md)
 
 # Screenshots: Mars App
-## Before Scraping
+## 1) Before Scraping
 ![Before Scraping](https://github.com/ekenigsberg/BootCampHomework10-2019-08-10/blob/master/img/Screenshot01-before%20scrape.png)
-## During Scraping
+## 2) During Scraping
 ![During Scraping](https://github.com/ekenigsberg/BootCampHomework10-2019-08-10/blob/master/img/Screenshot02-during%20scrape.png)
-## After Scraping
+## 3) After Scraping
 ![After Scraping](https://github.com/ekenigsberg/BootCampHomework10-2019-08-10/blob/master/img/Screenshot03-after%20scrape.png)
 
 # Technical Insights
